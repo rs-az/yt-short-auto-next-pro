@@ -1,0 +1,1 @@
+# yt-short-auto-next-pro
