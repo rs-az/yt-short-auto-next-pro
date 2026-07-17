@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Shorts Auto Next Pro</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container" id="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <span class="icon-logo">⏭️</span>
+        <div class="brand-text">
+          <h1>Auto Next Pro</h1>
+          <span class="version">v1.0.0</span>
+        </div>
+      </div>
+      <div class="toggle-container">
+        <label class="switch">
+          <input type="checkbox" id="enabled-toggle">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Status Badge -->
+      <div class="status-banner" id="status-banner">
+        <span class="status-dot"></span>
+        <span class="status-text" id="status-text">Auto Next is Active</span>
+      </div>
+
+      <!-- Quick Controls -->
+      <section class="section">
+        <h2 class="section-title">Quick Settings</h2>
+        
+        <div class="control-group">
+          <label for="delay-select">Delay Before Next</label>
+          <div class="select-wrapper">
+            <select id="delay-select">
+              <option value="0">Immediate (0s)</option>
+              <option value="1">1 second</option>
+              <option value="2">2 seconds</option>
+              <option value="3">3 seconds</option>
+              <option value="5">5 seconds</option>
+              <option value="custom">Custom value...</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-group hidden" id="custom-delay-group">
+          <label for="custom-delay-input">Custom Delay (seconds)</label>
+          <input type="number" id="custom-delay-input" min="0" max="30" step="0.5" value="0">
+        </div>
+
+        <div class="control-group">
+          <label for="skip-select">Skip Long Videos</label>
+          <div class="select-wrapper">
+            <select id="skip-select">
+              <option value="disabled">Disabled</option>
+              <option value="30">Longer than 30s</option>
+              <option value="45">Longer than 45s</option>
+              <option value="60">Longer than 60s</option>
+              <option value="90">Longer than 90s</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="random-delay-checkbox">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-text">
+              <span class="checkbox-title">Randomize Delay</span>
+              <span class="checkbox-desc">Adds 0–1.5s delay to mimic human behavior</span>
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <!-- Statistics Panel -->
+      <section class="section stats-section">
+        <div class="section-header">
+          <h2 class="section-title">Today's Statistics</h2>
+          <button id="reset-stats-btn" class="btn-text">Reset</button>
+        </div>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-value" id="stat-watched">0</span>
+            <span class="stat-label">Watched</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="stat-skipped">0</span>
+            <span class="stat-label">Skipped</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="stat-duration">0m</span>
+            <span class="stat-label">Session</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="stat-avg-time">0s</span>
+            <span class="stat-label">Avg Watch</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <button id="open-settings-btn" class="btn btn-primary">Open Advanced Settings</button>
+      <div class="footer-links">
+        <a href="#" id="github-link" target="_blank" rel="noopener">GitHub Project</a>
+      </div>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

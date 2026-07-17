@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Shorts Auto Next Pro — Advanced Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body class="system-theme">
+  <div class="container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="logo">⏭️</span>
+        <div class="brand-text">
+          <h1>Auto Next Pro</h1>
+          <span class="desc">Extension Options</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <button class="nav-item active" data-tab="general">General Configuration</button>
+        <button class="nav-item" data-tab="navigation">Navigation Method</button>
+        <button class="nav-item" data-tab="stats">Data & Backup</button>
+      </nav>
+      <div class="sidebar-footer">
+        <span class="version">Version 1.0.0</span>
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="content">
+      <!-- Tab 1: General -->
+      <section class="tab-panel active" id="tab-general">
+        <h2 class="tab-title">General Settings</h2>
+        
+        <div class="card">
+          <h3 class="card-title">Theme & Appearance</h3>
+          <p class="card-desc">Choose how the options page and popups look.</p>
+          <div class="form-group">
+            <label for="theme-select">Visual Theme</label>
+            <select id="theme-select">
+              <option value="system">Follow System Preferences</option>
+              <option value="dark">Dark Theme (Deep Slate)</option>
+              <option value="light">Light Theme (Clean White)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="animation-checkbox">
+              <span class="checkbox-custom"></span>
+              <span class="label-text">Enable UI Transitions & Animations</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Behavior & Alerts</h3>
+          <p class="card-desc">Customize runtime behavior and background alerts.</p>
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="notification-checkbox">
+              <span class="checkbox-custom"></span>
+              <span class="label-text">Enable Desktop Notifications on Auto Advance</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="logging-checkbox">
+              <span class="checkbox-custom"></span>
+              <span class="label-text">Enable Debug Console Logging (Developer mode)</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab 2: Navigation -->
+      <section class="tab-panel" id="tab-navigation">
+        <h2 class="tab-title">Navigation & Robustness</h2>
+        
+        <div class="card">
+          <h3 class="card-title">Navigation Priority</h3>
+          <p class="card-desc">Define the order of navigation techniques. Click Arrow buttons to arrange priorities.</p>
+          
+          <div class="priority-list" id="priority-list">
+            <div class="priority-item" data-method="keyboard">
+              <div class="item-info">
+                <span class="drag-handle">☰</span>
+                <div>
+                  <span class="item-title">Simulate Arrow Down Key</span>
+                  <span class="item-desc">Primary Method: Dispatches arrow event to document/video</span>
+                </div>
+              </div>
+              <div class="item-controls">
+                <button class="btn-icon btn-up">▲</button>
+                <button class="btn-icon btn-down">▼</button>
+              </div>
+            </div>
+
+            <div class="priority-item" data-method="button">
+              <div class="item-info">
+                <span class="drag-handle">☰</span>
+                <div>
+                  <span class="item-title">Click YouTube "Next Short" Button</span>
+                  <span class="item-desc">Fallback 1: Identifies and clicks the DOM navigation button</span>
+                </div>
+              </div>
+              <div class="item-controls">
+                <button class="btn-icon btn-up">▲</button>
+                <button class="btn-icon btn-down">▼</button>
+              </div>
+            </div>
+
+            <div class="priority-item" data-method="scroll">
+              <div class="item-info">
+                <span class="drag-handle">☰</span>
+                <div>
+                  <span class="item-title">Smooth Container Scroll</span>
+                  <span class="item-desc">Fallback 2: Commands a vertical viewport scroll to next container</span>
+                </div>
+              </div>
+              <div class="item-controls">
+                <button class="btn-icon btn-up">▲</button>
+                <button class="btn-icon btn-down">▼</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Error Recovery</h3>
+          <p class="card-desc">Tweak tolerances when YouTube loading delays playback.</p>
+          <div class="form-row">
+            <div class="form-group half">
+              <label for="max-retries-input">Max Navigation Retries</label>
+              <input type="number" id="max-retries-input" min="1" max="10" value="3">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab 3: Data & Backup -->
+      <section class="tab-panel" id="tab-stats">
+        <h2 class="tab-title">Data Administration</h2>
+        
+        <div class="card">
+          <h3 class="card-title">Import & Export Configuration</h3>
+          <p class="card-desc">Export your settings to a local JSON file or import a saved backup configuration.</p>
+          
+          <div class="action-buttons">
+            <button id="export-settings-btn" class="btn btn-outline">Export Settings JSON</button>
+            <div class="upload-btn-wrapper">
+              <button class="btn btn-outline">Import Settings JSON</button>
+              <input type="file" id="import-settings-file" accept=".json">
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-danger">
+          <h3 class="card-title">Factory Reset</h3>
+          <p class="card-desc">Warning: This will clear all statistics, restore settings to their factory defaults, and re-initialize the extension.</p>
+          <button id="factory-reset-btn" class="btn btn-danger">Reset All Settings & Stats</button>
+        </div>
+      </section>
+
+      <!-- Fixed Saved Notice -->
+      <div class="save-toast" id="save-toast">Settings saved automatically!</div>
+    </main>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
